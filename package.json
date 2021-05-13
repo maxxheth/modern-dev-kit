@@ -1,0 +1,101 @@
+{
+  "name": "edfx-dev-package",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava",
+    "buildCommandModern": "BROWSERSLIST_ENV=modern NODE_ENV=production webpack --config webpack.config.js",
+    "buildModern": "npm run fix && npm run buildCommandModern",
+    "devCommandModern": "BROWSERSLIST_ENV=modern NODE_ENV=development webpack --config webpack.config.js",
+    "devModern": "npm run fix && npm run devCommandModern",
+    "buildCommandLegacy": "BROWSERSLIST_ENV=legacy NODE_ENV=production webpack --config webpack.config.js",
+    "buildLegacy": "npm run fix && npm run buildCommandLegacy",
+    "devCommandLegacy": "BROWSERSLIST_ENV=legacy NODE_ENV=development webpack --config webpack.config.js",
+    "devLegacy": "npm run fix && npm run devCommandLegacy",
+    "build": "npm run buildModern",
+    "lintJS": "find ./assets/js/src -type f -name \"*.js\" -exec eslint {} \\;",
+    "lintCSS": "find ./assets/scss/src -type f -name \"*.scss\" -exec stylelint {} \\;",
+    "fix": "find ./assets/js/src -type f -name \"*.js\" -exec eslint --fix {} \\;",
+    "wpLintJS": "find ./assets/js/src -type f -name \"*.js\" -exec wp-scripts lint-js {} \\;",
+    "wpLintCSS": "find ./assets/scss/src -type f -name \"*.scss\" -exec wp-scripts lint-css {} \\;",
+    "watch": "node browsersync.js",
+    "clearJSModernDist": "rm -rf ./assets/js/dist/*.modern.js*",
+    "clearJSLegacyDist": "rm -rf ./assets/js/dist/*.legacy.js*",
+    "clearCSSDist": "rm -rf ./assets/scss/dist/*.css*"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.0",
+    "@babel/eslint-parser": "^7.13.14",
+    "@babel/plugin-transform-runtime": "^7.13.15",
+    "@babel/preset-env": "^7.14.1",
+    "@babel/preset-flow": "^7.13.13",
+    "@babel/register": "^7.13.16",
+    "@swc/cli": "^0.1.39",
+    "@swc/core": "^1.2.55",
+    "@wordpress/scripts": "^15.0.1",
+    "autoprefixer": "^10.2.5",
+    "ava": "^3.15.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-preset-minify": "^0.5.1",
+    "browser-sync": "^2.26.14",
+    "core-js": "^3.12.1",
+    "css-loader": "^5.2.4",
+    "cssnano": "^5.0.2",
+    "es6-promise": "^4.2.8",
+    "eslint": "^7.26.0",
+    "eslint-import-resolver-webpack": "^0.13.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "extract-loader": "^5.1.0",
+    "fibers": "^5.0.0",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^1.6.0",
+    "parcel": "^2.0.0-beta.2",
+    "postcss": "^8.2.14",
+    "postcss-cli": "^8.3.1",
+    "postcss-import": "^14.0.1",
+    "postcss-loader": "^5.2.0",
+    "postcss-preset-env": "^6.7.0",
+    "resolve-url-loader": "^4.0.0",
+    "sass": "^1.32.12",
+    "sass-loader": "^11.1.0",
+    "style-loader": "^2.0.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-recommended": "^5.0.0",
+    "stylelint-webpack-plugin": "^2.1.1",
+    "terser-webpack-plugin": "^5.1.1",
+    "webpack": "^5.37.0",
+    "webpack-babel-env-deps": "^1.6.4",
+    "webpack-bundle-analyzer": "^4.4.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "a11y-dialog": "^7.1.0",
+    "animate.css": "^4.1.1"
+  },
+  "browserslist": {
+    "modern": [
+      "defaults"
+    ],
+    "legacy": [
+      "since 2015",
+      "ie 11"
+    ]
+  },
+  "quokka": {
+    "babel": true
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}

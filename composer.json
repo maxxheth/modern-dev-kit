@@ -1,0 +1,25 @@
+{
+    "require-dev": {
+        "phpunit/phpunit": "8",
+        "giacocorsiglia/wordpress-stubs": "^5.1"
+    },
+    "require": {
+        "htmlburger/carbon-fields": "^3.2",
+        "nesbot/carbon": "^2.46",
+        "phpoffice/phpspreadsheet": "^1.17",
+        "vlucas/phpdotenv": "^5.3",
+        "google/apiclient": "^2.7"
+    },
+    "scripts": {
+        "wpcs:all": "find . -path ./vendor -prune -false -o -type f -name '*.php' -exec wpcs {} \\;",
+        "wpcbf:all": "find . -path ./vendor -prune -false -o -type f -name '*.php' -exec wpcbf {} \\;",
+        "wpcs:all:print": "find . -path ./vendor -prune -false -o -type f -name '*.php' -exec wpcs {} > wpcs-results.log \\;",
+        "wpcbf:all:print": "find . -path ./vendor -prune -false -o -type f -name '*.php' -exec wpcbf {} > wpcbf-results.log \\:",
+        "post-update-cmd": "Google\\Task\\Composer::cleanup"
+    },
+    "extra": {
+        "google/apiclient-services": [
+            "YouTube"
+        ]
+    }
+}
